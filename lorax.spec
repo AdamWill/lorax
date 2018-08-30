@@ -4,7 +4,7 @@
 
 Name:           lorax
 Version:        29.13
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Tool for creating the anaconda install images
 
 Group:          Applications/System
@@ -47,6 +47,8 @@ Requires:       libselinux-python3
 Requires:       python3-mako
 Requires:       python3-kickstart
 Requires:       python3-dnf >= 3.2.0
+# For pyanaconda
+Requires:       anaconda-core
 
 
 %if 0%{?fedora}
@@ -230,6 +232,9 @@ getent passwd weldr >/dev/null 2>&1 || useradd -r -g weldr -d / -s /sbin/nologin
 %{_sysconfdir}/bash_completion.d/composer-cli
 
 %changelog
+* Wed Aug 29 2018 Adam Williamson <awilliam@redhat.com> - 29.13-2
+- Requires anaconda-core (for use of pyanaconda)
+
 * Wed Aug 29 2018 Brian C. Lane <bcl@redhat.com> 29.13-1
 - Update the example blueprints for rawhide (bcl@redhat.com)
 - Bump required dnf version to 3.2.0 for module_platform_id support (bcl@redhat.com)
