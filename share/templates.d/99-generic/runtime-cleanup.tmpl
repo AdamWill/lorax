@@ -335,6 +335,11 @@ removefrom gstreamer1 --allbut /usr/${libdir}/libgstbase-1.0.* \
                                /usr/${libdir}/libgstreamer-1.0.*
 removefrom gstreamer1-plugins-base --allbut \
         /usr/${libdir}/libgst{allocators,app,audio,fft,gl,pbutils,tag,video}-1.0.*
+## it also depends on gstreamer1-plugins-good and -bad-free for media
+# playback, which we don't need, and those pull in a ton of others...
+removepkg gstreamer1-plugins-good gstreamer1-plugins-bad-free
+removepkg gssdp gupnp lame-libs libdvdnav libdvdread libnice libshout
+removepkg libsrtp libv4l libva libvpx mpg123-libs speex soundtouch wavpack
 
 ## We have enough geoip libraries, thanks
 removepkg geoclue2
